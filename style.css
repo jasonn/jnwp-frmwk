@@ -1,0 +1,163 @@
+/*
+Theme Name: jN-WP Framework
+Theme URI: http://jason.newlin.me
+Description: Jason Newlin WordPress Framework.
+Version: 1.0
+Author: Jason Newlin
+Author URI: http://jason.newlin.me
+
+/* --------------------------------------------------------------
+
+Both the reset.css and the typography.css files are already
+included in the framework.
+
+-------------------------------------------------------------- */
+
+body {}
+
+
+/* Main Layout
+-------------------------------------------------------------- */
+body>nav {}
+body>header {margin: 0 auto; width: 960px;}
+
+body>#content-wrapper {margin: auto; overflow: hidden; width: 960px;}
+body>#content-wrapper>section {float: left; padding-bottom: 28px; width: 640px;}
+body>#content-wrapper>aside {margin-left: 660px; width: 300px;}
+
+body>footer {clear: left; margin: 0 auto; width: 960px;}
+
+nav.main-navigation {padding: 10px 0;}
+nav.main-navigation ul {margin: 0 auto; overflow: hidden; width: 960px;}
+nav.main-navigation ul li {float: left; margin-right: 10px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* WordPress default styles
+-------------------------------------------------------------- */
+.aligncenter,
+div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft {
+   float: left;
+}
+
+.alignright {
+   float: right;
+}
+
+.wp-caption {
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+}
+
+.wp-caption img {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+   font-size: 11px;
+   line-height: 17px;
+   padding: 0 4px 5px;
+   margin: 0;
+}
+
+
+
+/* Comment list styles
+-------------------------------------------------------------- */
+ol.comment-list {}
+ol.comment-list li {}
+ol.comment-list li.alt {}
+ol.comment-list li.bypostauthor {}
+ol.comment-list li.byuser {}
+ol.comment-list li.comment-author-admin {}
+ol.comment-list li.comment {}
+ol.comment-list li.comment div.comment-author {}
+ol.comment-list li.comment div.vcard {}
+ol.comment-list li.comment div.vcard cite.fn {}
+ol.comment-list li.comment div.vcard cite.fn a.url {}
+ol.comment-list li.comment div.vcard img.avatar {}
+ol.comment-list li.comment div.vcard img.avatar-32 {}
+ol.comment-list li.comment div.vcard img.photo {}
+ol.comment-list li.comment div.vcard span.says {}
+ol.comment-list li.comment div.commentmetadata {}
+ol.comment-list li.comment div.comment-meta {}
+ol.comment-list li.comment div.comment-meta .comment-date {}
+ol.comment-list li.comment div.comment-meta .comment-time {}
+ol.comment-list li.comment div.comment-meta a {}
+ol.comment-list li.comment div.comment-content {}
+ol.comment-list li.comment div.comment-reply {}
+ol.comment-list li.comment div.comment-reply a {}
+ol.comment-list li.comment ul.children {}
+ol.comment-list li.comment ul.children li {}
+ol.comment-list li.comment ul.children li.alt {}
+ol.comment-list li.comment ul.children li.bypostauthor {}
+ol.comment-list li.comment ul.children li.byuser {}
+ol.comment-list li.comment ul.children li.comment {}
+ol.comment-list li.comment ul.children li.comment-author-admin {}
+ol.comment-list li.comment ul.children li.depth-2 {}
+ol.comment-list li.comment ul.children li.depth-3 {}
+ol.comment-list li.comment ul.children li.depth-4 {}
+ol.comment-list li.comment ul.children li.depth-5 {}
+ol.comment-list li.comment ul.children li.odd {}
+ol.comment-list li.even {}
+ol.comment-list li.odd {}
+ol.comment-list li.parent {}
+
+ol.pings-list li.pingback {}
+ol.pings-list li.pingback div.comment-author {}
+ol.pings-list li.pingback div.vcard {}
+ol.pings-list li.pingback div.vcard cite.fn {}
+ol.pings-list li.pingback div.vcard cite.fn a.url {}
+ol.pings-list li.pingback div.vcard span.says {}
+ol.pings-list li.pingback div.commentmetadata {}
+ol.pings-list li.pingback div.comment-meta {}
+ol.pings-list li.pingback div.comment-meta .comment-date {}
+ol.pings-list li.pingback div.comment-meta .comment-time {}
+ol.pings-list li.pingback div.comment-meta a {}
+ol.pings-list li.pingback div.comment-reply {}
+ol.pings-list li.pingback div.comment-reply a {}
+ol.pings-list li.pingback ul.children {}
+ol.pings-list li.pingback ul.children li {}
+ol.pings-list li.pingback ul.children li.alt {}
+ol.pings-list li.pingback ul.children li.bypostauthor {}
+ol.pings-list li.pingback ul.children li.byuser {}
+ol.pings-list li.pingback ul.children li.comment {}
+ol.pings-list li.pingback ul.children li.comment-author-admin {}
+ol.pings-list li.pingback ul.children li.depth-2 {}
+ol.pings-list li.pingback ul.children li.depth-3 {}
+ol.pings-list li.pingback ul.children li.depth-4 {}
+ol.pings-list li.pingback ul.children li.depth-5 {}
+ol.pings-list li.pingback ul.children li.odd {}
+ol.pings-list li.thread-alt {}
+ol.pings-list li.thread-even {}
+ol.pings-list li.thread-odd {}
+
+
+

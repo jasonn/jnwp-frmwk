@@ -1,0 +1,70 @@
+/* --------------------------------------------------------------
+
+typography.css
+
+-------------------------------------------------------------- */
+ 
+/* Default font settings.
+The font-size percentage is of 16px. (0.75 * 16px = 12px) */
+html {font-size: 100.01%;}
+body {
+	background: #fff;
+	color: #666;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+	font-size: 87.5%;
+	line-height: 1.35;
+}
+ 
+ 
+/* Headings
+-------------------------------------------------------------- */
+h1,h2,h3,h4,h5,h6 {font-weight: bold; color: #111;}
+ 
+h1 {font-size: 3.0em; line-height: 1; margin-bottom: 0.25em;}
+h2 {font-size: 1.70em; line-height: 1.20; margin-bottom: 0.75em;}
+h3 {font-size: 1.5em; line-height: 1; margin-bottom: 0.5em;}
+h4 {font-size: 1.2em; line-height: 1.25; margin-bottom: 0.5em;}
+h5 {font-size: 1.0em; font-weight: normal; margin-bottom: 0.25em;}
+h6 {font-size: 0.9em; font-weight: normal;}
+ 
+h1 img, h2 img, h3 img,
+h4 img, h5 img, h6 img {margin: 0;}
+ 
+ 
+/* Text elements
+-------------------------------------------------------------- */
+p {margin: 0 0 1.25em;}
+ 
+a:focus,
+a:hover {color: #7c0226; text-decoration: none;}
+a {color: #fc2c69; text-decoration: underline;}
+ 
+blockquote {margin: 1.25em; color: #666; font-style: italic;}
+strong {font-weight: bold;}
+em,dfn {font-style: italic;}
+dfn {font-weight: bold;}
+sup, sub {line-height: 0;}
+ 
+abbr,
+acronym {border-bottom: 1px dotted #666;}
+address {margin: 0 0 1.25em; font-style: italic;}
+ 
+pre {margin: 1.25em 0; white-space: pre;}
+pre,code,tt {font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5;}
+ 
+ 
+/* Lists
+-------------------------------------------------------------- */
+
+li ul,
+li ol { margin: 0; }
+ul, ol { margin: 0 1.25em 1.25em 0; padding-left: 2.5em; }
+
+nav ul {margin: 0; padding-left: 0;}
+
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+
+dl {margin: 0 0 1.25em 0;}
+dl dt {font-weight: bold;}
+dd {margin-left: 1.15em;}
