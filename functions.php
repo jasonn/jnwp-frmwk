@@ -2,10 +2,15 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
 
-define( 'jNWP_Framework', '1.0' );
-	require_once( TEMPLATEPATH . '/framework/framework.php' );
-	jNWPFramework::init();
+// ThemeFramework Version
+define( 'VERSION', '1.1' );
+
+// Load ThemeFramework
+require_once( TEMPLATEPATH . '/framework/framework.php' );
+
+// Bootstrap ThemeFramework
+ThemeFramework::init();
 ?>

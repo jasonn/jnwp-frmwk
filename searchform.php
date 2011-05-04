@@ -2,7 +2,7 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
  
 //set the random id length 

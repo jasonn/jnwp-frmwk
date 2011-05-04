@@ -2,7 +2,7 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
 
 get_header(); ?>
@@ -14,7 +14,7 @@ get_header(); ?>
   	<article id="post-<?php the_ID(); ?>" <?php post_class('page'); ?>>
 		  <header>
 			  <h1><?php the_title(); ?></h1>
-			  <?php edit_post_link( __( 'Edit', 'jnwpframwork' ), '<span class="edit-link">', '</span>' ); ?>
+			  <?php edit_post_link( __( 'Edit', 'themeframework' ), '<span class="edit-link">', '</span>' ); ?>
       </header>
       
 			<section>

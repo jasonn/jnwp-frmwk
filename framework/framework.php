@@ -2,17 +2,18 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
 
-class jNWPFramework {
+class ThemeFramework {
 	
 	function init() {		
-		$theme = new jNWPFramework;
+		$theme = new ThemeFramework;
 		
 		$theme->enviroment();
 		$theme->framework();
-		$theme->extentions();
+		$theme->extensions();
+		$theme->widgets();
 		$theme->defaults();
 		$theme->ready();
 		
@@ -20,21 +21,15 @@ class jNWPFramework {
 	}
 	
 	/**
-	 * enviroment() defines jNWPFramework directory constants
+	 * enviroment() defines ThemeFramework directory constants
 	 *
 	 */
 	function enviroment() {	
 		define('FRAMEWORK', TEMPLATEPATH . '/framework');
-		define('THEMECORE', FRAMEWORK . '/functions/');
+		define('CORE', FRAMEWORK . '/core/');
 		define('EXTENSIONS', FRAMEWORK . '/extensions/');
-		define('THEMEUI', TEMPLATEPATH . '/ui');
-		
-		// URI shortcuts
-		define('THEME', get_bloginfo('template_url'), true);
-		
-		if (STYLESHEETPATH !== TEMPLATEPATH) define('UI', get_bloginfo('template_url') . '/ui', true);
-		else define('UI', THEME . '/ui', true);
-
+		define('WIDGETS', FRAMEWORK . '/widgets/');
+		define('UI', get_bloginfo('template_url') . '/framework/ui');
 		define('CSS', UI . '/stylesheets/');
 		define('IMAGES', UI . '/images/');
 		define('JS', UI . '/javascripts/');
@@ -43,49 +38,59 @@ class jNWPFramework {
 	}
 	
 	/**
-	 * framework() includes all the core functions for jN_Framework
+	 * framework() includes all the core functions for ThemeFramework
 	 */
 	function framework() {
-		require_once(THEMECORE . '/functions.php'); // load Framework functions
-		require_once(THEMECORE . '/widgets.php'); // load Widget functions
+		require_once(CORE . '/theme-functions.php'); // load Framework functions
+		require_once(CORE . '/widgets.php'); // load Widget functions
 	}
 	
 	/**
-	 * extentions() includes all extentions files - if they exist
+	 * extensions() includes all extensions files
 	 *
 	 */
-	function extentions() {
+	function extensions() {
 		include_all(EXTENSIONS);
 	}
 	
 	/**
-	 * defaults() jN_Framework defaults
+	 * widgets() includes all widget files
+	 *
+	 */
+	function widgets() {
+		include_all(WIDGETS);
+	}
+	
+	/**
+	 * defaults() ThemeFramework defaults
 	 *
 	 */
 	function defaults() {
+	  // Remove Actions
 		remove_action('wp_head', 'wp_generator'); // removes the generator link
 		remove_action('wp_head', 'wlwmanifest_link'); // removes the wlw manifest link
     remove_action('wp_head', 'rsd_link'); // removes the rsd link
 		
-		add_filter('wp_nav_menu', 'list_pages_post_name_css'); // adds css class name to the <li>'s in the menu, also adds 'last' class to last <li>
+		// Add Filters
 		add_filter('body_class','extend_body_class'); // adds a 'post_slug' css class to the body
-		add_filter('script_loader_src', 'optimizescripts_set_src_query_params', 10, 2); // Removed the ver number on loaded scripts if the value is null
-		add_action( 'widgets_init', 'remove_recent_comments_style' ); // Removes default css in the head
+		add_filter( 'show_recent_comments_widget_style', '__return_false' ); // Removes default Recent Comments widget css
 		
+		// Add Actions
 		add_action( 'init', 'framework_media' ); // loads scripts and styles
 		
+		// Theme Support
 		add_theme_support( 'automatic-feed-links' ); // Add default posts and comments RSS feed links to head
-		add_theme_support( 'post-thumbnails' ); // Adds post thumbnail support
 		
+
+    // Editor CSS
 		add_editor_style(); // Adds support to have the visual editor match the theme style
 	}
 	
 	function ready() {
-		if (file_exists(FRAMEWORK . '/widgets.php')) include_once(FRAMEWORK . '/widgets.php'); // include widgets.php if that file exist
-		if (file_exists(FRAMEWORK . '/custom-functions.php')) include_once(FRAMEWORK . '/custom-functions.php'); // include custom-functions.php if that file exist
+		if (file_exists(FRAMEWORK . '/functions.php')) include_once(FRAMEWORK . '/functions.php'); // include custom-functions.php if that file exist
 		do_action('framework_init'); // Available action: framework_init
 		register_widgets();
 	}
 
-} // end of jNWPFramework;
+} // end of ThemeFramework;
 ?>

@@ -1,69 +1,153 @@
 <?php
 /**
  *
- * PHP CSS Browser Selector v0.0.1
- * Bastian Allgeier (http://bastian-allgeier.de)
- * http://bastian-allgeier.de/css_browser_selector
- * License: http://creativecommons.org/licenses/by/2.5/
- * Credits: This is a php port from Rafael Lima's original Javascript CSS Browser Selector: http://rafael.adm.br/css_browser_selector
+ * From Bastian Allgeier's Kirby PHP Framework
+ * http://github.com/bastianallgeier/kirby
+ * http://github.com/bastianallgeier/kirby/blob/master/docs/browser.mdown
  */
 
-function css_browser_selector($ua=null) {
-		$ua = ($ua) ? strtolower($ua) : strtolower($_SERVER['HTTP_USER_AGENT']);		
+class browser {
 
-		$g = 'gecko';
-		$w = 'webkit';
-		$s = 'safari';
-		$b = array();
-		
+	static public $ua = false;
+	static public $browser = false;
+	static public $engine = false;
+	static public $version = false;
+	static public $platform = false;
+
+	function name($ua=null) {
+		self::detect($ua);
+		return self::$browser;
+	}
+
+	function engine($ua=null) {
+		self::detect($ua);
+		return self::$engine;
+	}
+
+	function version($ua=null) {
+		self::detect($ua);
+		return self::$version;
+	}
+
+	function platform($ua=null) {
+		self::detect($ua);
+		return self::$platform;
+	}
+
+	function mobile($ua=null) {
+		self::detect($ua);
+		return (self::$platform == 'mobile') ? true : false;
+	}
+
+	function iphone($ua=null) {
+		self::detect($ua);
+		return (in_array(self::$platform, array('ipod', 'iphone'))) ? true : false;
+	}
+
+	function ios($ua=null) {
+		self::detect($ua);
+		return (in_array(self::$platform, array('ipod', 'iphone', 'ipad'))) ? true : false;
+	}
+
+	function css($ua=null, $array=false) {
+		self::detect($ua);
+		$css[] = self::$engine;
+		$css[] = self::$browser;
+		if(self::$version) $css[] = self::$browser . str_replace('.', '_', self::$version);
+		$css[] = self::$platform;
+		return ($array) ? $css : implode(' ', $css);
+	}
+
+	function detect($ua=null) {
+		//$ua = ($ua) ? str::lower($ua) : str::lower(server::get('http_user_agent'));
+		$ua = ($ua) ? strtolower($ua) : strtolower($_SERVER['HTTP_USER_AGENT']);	
+
+		// don't do the detection twice
+		if(self::$ua == $ua) return array(
+			'browser'	=> self::$browser,
+			'engine'	 => self::$engine,
+			'version'	=> self::$version,
+			'platform' => self::$platform
+		);
+
+		self::$ua		 = $ua;
+		self::$browser	= false;
+		self::$engine	 = false;
+		self::$version	= false;
+		self::$platform = false;
+
 		// browser
-		if(!preg_match('/opera|webtv/i', $ua) && preg_match('/msie\s(\d)/', $ua, $array)) {
-				$b[] = 'ie ie' . $array[1];
-		}	else if(strstr($ua, 'firefox/2')) {
-				$b[] = $g . ' ff2';		
-		}	else if(strstr($ua, 'firefox/3.5')) {
-				$b[] = $g . ' ff3 ff3_5';
-		}	else if(strstr($ua, 'firefox/3')) {
-				$b[] = $g . ' ff3';
-		} else if(strstr($ua, 'gecko/')) {
-				$b[] = $g;
-		} else if(preg_match('/opera(\s|\/)(\d+)/', $ua, $array)) {
-				$b[] = 'opera opera' . $array[2];
-		} else if(strstr($ua, 'konqueror')) {
-				$b[] = 'konqueror';
-		} else if(strstr($ua, 'chrome')) {
-				$b[] = $w . ' ' . $s . ' chrome';
-		} else if(strstr($ua, 'iron')) {
-				$b[] = $w . ' ' . $s . ' iron';
-		} else if(strstr($ua, 'applewebkit/')) {
-				$b[] = (preg_match('/version\/(\d+)/i', $ua, $array)) ? $w . ' ' . $s . ' ' . $s . $array[1] : $w . ' ' . $s;
-		} else if(strstr($ua, 'mozilla/')) {
-				$b[] = $g;
+		if(!preg_match('/opera|webtv/i', self::$ua) && preg_match('/msie\s(\d)/', self::$ua, $array)) {
+			self::$version = $array[1];
+			self::$browser = 'ie';
+			self::$engine	= 'trident';
+		}	else if(strstr(self::$ua, 'firefox/3.6')) {
+			self::$version = 3.6;
+			self::$browser = 'fx';
+			self::$engine	= 'gecko';
+		}	else if (strstr(self::$ua, 'firefox/3.5')) {
+			self::$version = 3.5;
+			self::$browser = 'fx';
+			self::$engine	= 'gecko';
+		}	else if(preg_match('/firefox\/(\d+)/i', self::$ua, $array)) {
+			self::$version = $array[1];
+			self::$browser = 'fx';
+			self::$engine	= 'gecko';
+		} else if(preg_match('/opera(\s|\/)(\d+)/', self::$ua, $array)) {
+			self::$engine	= 'presto';
+			self::$browser = 'opera';
+			self::$version = $array[2];
+		} else if(strstr(self::$ua, 'konqueror')) {
+			self::$browser = 'konqueror';
+			self::$engine	= 'webkit';
+		} else if(strstr(self::$ua, 'iron')) {
+			self::$browser = 'iron';
+			self::$engine	= 'webkit';
+		} else if(strstr(self::$ua, 'chrome')) {
+			self::$browser = 'chrome';
+			self::$engine	= 'webkit';
+			if(preg_match('/chrome\/(\d+)/i', self::$ua, $array)) { self::$version = $array[1]; }
+		} else if(strstr(self::$ua, 'applewebkit/')) {
+			self::$browser = 'safari';
+			self::$engine	= 'webkit';
+			if(preg_match('/version\/(\d+)/i', self::$ua, $array)) { self::$version = $array[1]; }
+		} else if(strstr(self::$ua, 'mozilla/')) {
+			self::$engine	= 'gecko';
+			self::$browser = 'mozilla';
 		}
 
-		// platform				
-		if(strstr($ua, 'j2me')) {
-				$b[] = 'mobile';
-		} else if(strstr($ua, 'iphone')) {
-				$b[] = 'iphone';		
-		} else if(strstr($ua, 'ipod')) {
-				$b[] = 'ipod';		
-		} else if(strstr($ua, 'mac')) {
-				$b[] = 'mac';		
-		} else if(strstr($ua, 'darwin')) {
-				$b[] = 'mac';		
-		} else if(strstr($ua, 'webtv')) {
-				$b[] = 'webtv';		
-		} else if(strstr($ua, 'win')) {
-				$b[] = 'win';		
-		} else if(strstr($ua, 'freebsd')) {
-				$b[] = 'freebsd';		
-		} else if(strstr($ua, 'x11') || strstr($ua, 'linux')) {
-				$b[] = 'linux';		
+		// platform
+		if(strstr(self::$ua, 'j2me')) {
+			self::$platform = 'mobile';
+		} else if(strstr(self::$ua, 'iphone')) {
+			self::$platform = 'iphone';
+		} else if(strstr(self::$ua, 'ipod')) {
+			self::$platform = 'ipod';
+		} else if(strstr(self::$ua, 'ipad')) {
+			self::$platform = 'ipad';
+		} else if(strstr(self::$ua, 'mac')) {
+			self::$platform = 'mac';
+		} else if(strstr(self::$ua, 'darwin')) {
+			self::$platform = 'mac';
+		} else if(strstr(self::$ua, 'webtv')) {
+			self::$platform = 'webtv';
+		} else if(strstr(self::$ua, 'win')) {
+			self::$platform = 'win';
+		} else if(strstr(self::$ua, 'freebsd')) {
+			self::$platform = 'freebsd';
+		} else if(strstr(self::$ua, 'x11') || strstr(self::$ua, 'linux')) {
+			self::$platform = 'linux';
 		}
-				
-		return join(' ', $b);
-		
+
+		return array(
+			'browser'  => self::$browser,
+			'engine'   => self::$engine,
+			'version'  => self::$version,
+			'platform' => self::$platform
+		);
+
+	}
+
 }
 
 ?>

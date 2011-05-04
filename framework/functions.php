@@ -2,24 +2,27 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
+ 
+ add_theme_support( 'post-formats', array( 'aside', 'gallery' ) ); // Post Format support.
+ add_theme_support( 'post-thumbnails' ); // Adds post thumbnail support
+ 
+ /**
+  * nav_menu_setup() sets up the WP 3.0 'menu'.
+  *
+  */
+ function nav_menu_setup() {
 
-/**
- * nav_menu_setup() sets up the WP 3.0 'menu'.
- *
- */
-function nav_menu_setup() {
-  
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-  	'primary' => __( 'Primary Navigation', 'jnwpframwork' ),
-  ) );
+ 	// This theme uses wp_nav_menu() in one location.
+ 	register_nav_menus( array(
+   	'primary' => __( 'Primary Navigation', 'themeframework' ),
+   ) );
 
-}
+ }
 
-add_action( 'after_setup_theme', 'nav_menu_setup' );
-
+ add_action( 'after_setup_theme', 'nav_menu_setup' );
+ 
 
 /**
  * Comments from twentyten theme.
@@ -93,10 +96,10 @@ function twentyten_filter_wp_title( $title, $separator ) {
 
 	if ( is_search() ) {
 		// If we're a search, let's start over:
-		$title = sprintf( __( 'Search results for %s', 'jnwpframwork' ), '"' . get_search_query() . '"' );
+		$title = sprintf( __( 'Search results for %s', 'themeframework' ), '"' . get_search_query() . '"' );
 		// Add a page number if we're on page 2 or more:
 		if ( $paged >= 2 )
-			$title .= " $separator " . sprintf( __( 'Page %s', 'jnwpframwork' ), $paged );
+			$title .= " $separator " . sprintf( __( 'Page %s', 'themeframework' ), $paged );
 		// Add the site name to the end:
 		$title .= " $separator " . get_bloginfo( 'name', 'display' );
 		// We're done. Let's send the new title back to wp_title():
@@ -113,7 +116,7 @@ function twentyten_filter_wp_title( $title, $separator ) {
 
 	// Add a page number if necessary:
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $separator " . sprintf( __( 'Page %s', 'jnwpframwork' ), max( $paged, $page ) );
+		$title .= " $separator " . sprintf( __( 'Page %s', 'themeframework' ), max( $paged, $page ) );
 
 	// Return the new title to wp_title():
 	return $title;

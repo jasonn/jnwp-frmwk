@@ -2,7 +2,7 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
  
 ?>
@@ -10,10 +10,10 @@
 <?php if ( ! have_posts() ) : ?>
 	<article id="not-found" class="post error-404 not-found">
     <header>
-		  <h2><?php _e( 'Not Found', 'jnwpframwork' ); ?></h2>
+		  <h2><?php _e( 'Not Found', 'themeframework' ); ?></h2>
 		</header>
 		<section>
-		  <p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'jnwpframwork' ); ?></p>
+		  <p><?php _e( 'Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post.', 'themeframework' ); ?></p>
 			<?php get_search_form(); ?>
 		</section>
 	</article>
@@ -40,7 +40,7 @@
 	  <article id="post-<?php the_ID(); ?>" <?php post_class('article'); ?>>
 		  <header>
 		    <?php if ( (function_exists('has_post_thumbnail')) && (has_post_thumbnail()) ) : the_post_thumbnail(); endif; ?>
-			  <h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink to %s', 'jnwpframwork' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h2>
+			  <h2><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink to %s', 'themeframework' ), the_title_attribute( 'echo=0' ) ); ?>"><?php the_title(); ?></a></h2>
 			  <p><?php twentyten_posted_on(); ?></p>
       </header>
       
@@ -48,24 +48,24 @@
 				<?php if ( is_archive() || is_search() ) : ?>
       	  <?php the_excerpt(); ?>
       	<?php else : ?>
-      		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'jnwpframwork' ) ); ?>
+      		<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'themeframework' ) ); ?>
       	<?php endif; ?>
 			</section>
 			
 			<footer>
 			  <p>
 			  	<?php if ( count( get_the_category() ) ) : ?>
-  						<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'jnwpframwork' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
+  						<?php printf( __( '<span class="%1$s">Posted in</span> %2$s', 'themeframework' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
   				<?php endif; ?>
 					<?php
   					$tags_list = get_the_tag_list( '', ', ' );
   					if ( $tags_list ):
   				?>
-  						<?php printf( __( '<span class="meta-sep">|</span> <span class="%1$s">Tagged</span> %2$s', 'jnwpframwork' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
+  						<?php printf( __( '<span class="meta-sep">|</span> <span class="%1$s">Tagged</span> %2$s', 'themeframework' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
   				<?php endif; ?>
   			  <span class="meta-sep">|</span>
-  			  <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'jnwpframwork' ), __( '1 Comment', 'jnwpframwork' ), __( '% Comments', 'jnwpframwork' ) ); ?></span>
-          <?php edit_post_link( __( 'Edit', 'jnwpframwork' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
+  			  <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'themeframework' ), __( '1 Comment', 'themeframework' ), __( '% Comments', 'themeframework' ) ); ?></span>
+          <?php edit_post_link( __( 'Edit', 'themeframework' ), '<span class="meta-sep">|</span> <span class="edit-link">', '</span>' ); ?>
 				</p>
 			</footer>
 		</article>

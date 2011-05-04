@@ -3,7 +3,7 @@
  * Template: Sidebar.php
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
 
 ?>

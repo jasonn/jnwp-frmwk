@@ -2,7 +2,7 @@
 Theme Name: jN-WP Framework
 Theme URI: http://jason.newlin.me
 Description: Jason Newlin WordPress Framework.
-Version: 1.0
+Version: 1.1
 Author: Jason Newlin
 Author URI: http://jason.newlin.me
 
@@ -15,21 +15,20 @@ included in the framework.
 
 body {}
 
-
 /* Main Layout
 -------------------------------------------------------------- */
 body>nav {}
 body>header {margin: 0 auto; width: 960px;}
 
-body>#content-wrapper {margin: auto; overflow: hidden; width: 960px;}
-body>#content-wrapper>section {float: left; padding-bottom: 28px; width: 640px;}
-body>#content-wrapper>aside {margin-left: 660px; width: 300px;}
+body>#content-container {margin: auto; overflow: hidden; width: 960px;}
+body>#content-container>section {float: left; padding-bottom: 28px; width: 640px;}
+body>#content-container>aside {margin-left: 660px; width: 300px;}
 
 body>footer {clear: left; margin: 0 auto; width: 960px;}
 
-nav.main-navigation {padding: 10px 0;}
-nav.main-navigation ul {margin: 0 auto; overflow: hidden; width: 960px;}
-nav.main-navigation ul li {float: left; margin-right: 10px;}
+nav.primary-navigation {padding: 10px 0;}
+nav.primary-navigation ul {margin: 0 auto; overflow: hidden; width: 960px;}
+nav.primary-navigation ul li {float: left; margin-right: 10px;}
 
 
 

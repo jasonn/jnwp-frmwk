@@ -2,13 +2,16 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
  
 ?>
 
 <!DOCTYPE html>
-<html <?php language_attributes(); ?><?php if(function_exists('css_browser_selector')) : ?> class="<?php echo css_browser_selector() ?>"<?php endif; ?>>
+<!--[if lt IE 7]> <html class="no-js ie ie6" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie ie7" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie ie8" <?php language_attributes(); ?>> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="<?php if(class_exists('browser')) : echo browser::css() ?> <?php endif; ?>no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 
 <head>
 
@@ -26,8 +29,11 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-  <?php wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'main-navigation', 'theme_location' => 'primary' ) ); ?>
+  <?php wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'primary-navigation', 'theme_location' => 'primary' ) ); ?>
+  
+  <p>
+    Stylesheetpath = <?php echo(STYLESHEETPATH); ?><br />
+    Templatepath = <?php echo(TEMPLATEPATH); ?></p>
   
   <header>
 		<?php if ( is_home() || is_front_page() ) { ?>
@@ -40,4 +46,4 @@
     <h2><?php bloginfo('description'); ?></h2>
 	</header>
 	
-	<div id="content-wrapper">
+	<div id="content-container">

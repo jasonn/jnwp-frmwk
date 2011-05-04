@@ -2,7 +2,7 @@
 /**
  *
  * @package WordPress
- * @subpackage jNWP_Framework
+ * @subpackage ThemeFramework
  */
 
 get_header(); ?>

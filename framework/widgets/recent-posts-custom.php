@@ -1,7 +1,6 @@
 <?php
 /**
  * Recent Posts Widget
- * Author: SpinSix
  * Version: 1.0
  */
 class RecentPostsWidget extends WP_Widget {
