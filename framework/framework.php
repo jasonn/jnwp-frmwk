@@ -89,7 +89,6 @@ class ThemeFramework {
 	function ready() {
 		if (file_exists(FRAMEWORK . '/functions.php')) include_once(FRAMEWORK . '/functions.php'); // include custom-functions.php if that file exist
 		do_action('framework_init'); // Available action: framework_init
-		register_widgets();
 	}
 
 } // end of ThemeFramework;

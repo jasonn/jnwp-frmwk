@@ -9,21 +9,20 @@
  * register_widgets()
  *
  */
-function register_widgets($name=null, $id=null) {
-	$defaults = array(
-	  'name' => null,
-    'id' => null,
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget' 	=> '</section>',
-		'before_title' 	=> '<h3>',
-		'after_title' 	=> '</h3>',
-	);
-	$defaults["name"] = $name;
-  $defaults["id"] = $id;
-	$args = apply_filters( 'register_widgets', (array) $defaults ); // Available filter: register_widgets
-	$how_many = apply_filters( 'register_widgets_count', (int) 1 ); // Available filter: widget_count
-	register_sidebars( $how_many, $args );
+
+function sidebars_init($sidebars) {
+  foreach($sidebars as $sb) {
+  	register_sidebar(array(
+  	  'name'=> $sb,
+  		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+  		'after_widget' 	=> '</div>',
+  		'before_title' 	=> '<h3 class="widget-title">',
+  		'after_title' 	=> '</h3>',
+  	));
+  }
 }
+
+add_action( 'widgets_init', sidebars_init(array('Sidebar')) );
 
 /**
  * widget_area_active() Checks to see if a widget area is active based on ID

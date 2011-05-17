@@ -180,13 +180,6 @@ class RecentPostsWidget extends WP_Widget {
 /**
  * Add function to widgets_init that'll load our widgets.
  */
-add_action( 'widgets_init', 'load_widgets' );
-
-/**
- * Register widgets.
- */
-function load_widgets() {
-	register_widget( 'RecentPostsWidget' );
-}
+add_action('widgets_init', create_function('', 'return register_widget("RecentPostsWidget");'));
 
 ?>
