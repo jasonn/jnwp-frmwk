@@ -28,6 +28,7 @@ class ThemeFramework {
 		define('FRAMEWORK', TEMPLATEPATH . '/framework');
 		define('CORE', FRAMEWORK . '/core/');
 		define('EXTENSIONS', FRAMEWORK . '/extensions/');
+		define('OPTIONS', FRAMEWORK . '/options/');
 		define('WIDGETS', FRAMEWORK . '/widgets/');
 		define('UI', get_bloginfo('template_url') . '/framework/ui');
 		define('CSS', UI . '/stylesheets/');
@@ -43,6 +44,7 @@ class ThemeFramework {
 	function framework() {
 		require_once(CORE . '/theme-functions.php'); // load Framework functions
 		require_once(CORE . '/widgets.php'); // load Widget functions
+		require_once(OPTIONS . '/options-framework.php'); // load Framework options panel
 	}
 	
 	/**

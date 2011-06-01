@@ -31,10 +31,6 @@
 <body <?php body_class(); ?>>
   <?php wp_nav_menu( array( 'container' => 'nav', 'container_class' => 'primary-navigation', 'theme_location' => 'primary' ) ); ?>
   
-  <p>
-    Stylesheetpath = <?php echo(STYLESHEETPATH); ?><br />
-    Templatepath = <?php echo(TEMPLATEPATH); ?></p>
-  
   <header>
 		<?php if ( is_home() || is_front_page() ) { ?>
       <h1 class="title"><?php bloginfo('name'); ?></h1>
