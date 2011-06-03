@@ -17,7 +17,7 @@ function framework_media() {
 	
 	wp_enqueue_script(
 	   'jquery',
-	   'http://ajax.googleapis.com/ajax/libs/jquery/1.5.2f/jquery.min.js',
+	   'http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js',
 	   array(),
 	   null, //since empty, no ver parameter in query string
 	   true //in_footer
