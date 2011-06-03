@@ -8,23 +8,21 @@
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie ie6" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie ie7" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie ie8" <?php language_attributes(); ?>> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html class="<?php if(class_exists('browser')) : echo browser::css() ?> <?php endif; ?>no-js" <?php language_attributes(); ?>> <!--<![endif]-->
+<!--[if lt IE 9]>      <html class="no-js <?php if(class_exists('browser')) : echo browser::css() ?> <?php endif; ?>oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="<?php if(class_exists('browser')) : echo browser::css() ?> <?php endif; ?>no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 
 <head>
 
 	<title><?php wp_title( '-', true, 'right' ); ?></title>
 
-	<meta charset="<?php bloginfo('charset'); ?>" />
-	<link rel="profile" href="http://gmpg.org/xfn/11" />
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+	<meta charset="<?php bloginfo('charset'); ?>">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
   
   <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 <?php wp_head(); ?>
 	
-	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="all" />
+	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="all">
 	
 </head>
 

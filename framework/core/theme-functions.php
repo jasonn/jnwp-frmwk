@@ -17,13 +17,37 @@ function framework_media() {
 	
 	wp_enqueue_script(
 	   'jquery',
-	   'http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js',
+	   'http://ajax.googleapis.com/ajax/libs/jquery/1.5.2f/jquery.min.js',
 	   array(),
 	   null, //since empty, no ver parameter in query string
 	   true //in_footer
 	);
 	
-	wp_enqueue_script('modernizr', JS . 'modernizr.js', array(), '1.7.custom', false);
+	/**
+   * jquery_fallback() loads local jQuery if CDN fails
+   *
+   */
+  function jquery_fallback( $src, $handle = null )
+  {
+    static $run_next = false;
+
+    if ( $run_next ) {
+      $local = JS . 'jquery.min.js';
+echo <<<FALLBACK
+        <script>window.jQuery || document.write('<script src="$local"><\/script>')</script>
+FALLBACK;
+        $run_next = false;
+    }
+
+    if ( $handle === 'jquery' )
+        $run_next = true;
+    return $src;
+  }
+  add_filter( 'script_loader_src', 'jquery_fallback', 10, 2 );
+  add_action( 'print_footer_scripts', 'jquery_fallback', 2 );
+	
+	// Continue loading scripts after jQuery
+	wp_enqueue_script('modernizr', JS . 'modernizr-2.0.min.js', array(), '2.0.custom', false);
 	
   wp_enqueue_style('reset', CSS . 'reset.css', array(), VERSION, 'screen');
   wp_enqueue_style('typography', CSS . 'typography.css', array(), VERSION, 'screen');
